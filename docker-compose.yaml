@@ -1,10 +1,21 @@
 version: "3.7"
 services:
   frontend:
-    build: front
+    image: node:lts-alpine
+    command: sh -c "yarn serve"
     ports:
-      - 80:80
-    depends_on:
-      - backend
+      - 8081:8080
+    working_dir: /app
+    volumes:
+      - ./front:/app
   backend:
-    build: back
+    image: cosmtrek/air
+    command: air
+    working_dir: /back
+    volumes:
+      - ./back:/back
+    ports:
+      - 8080:80
+  db:
+    image: cassandra:latest
+    

@@ -19,7 +19,7 @@ export default {
   },
   methods: {
     getSome() {
-      this.axios.get("/try").then(({ data }) => {
+      this.axios.get("/brands/1").then(({ data }) => {
         console.log(data)
         this.Something = data
       });
